@@ -482,7 +482,7 @@ func main() {
 								rel = p
 							}
 							buf.WriteString(rel)
-							buf.WriteString("\n\n")
+							buf.WriteString("\n```\n")
 							content, err := ioutil.ReadFile(p)
 							if err != nil {
 								buf.WriteString(fmt.Sprintf("error reading file: %v\n", err))
@@ -492,7 +492,7 @@ func main() {
 									buf.WriteString("\n")
 								}
 							}
-							buf.WriteString("\n---\n\n")
+							buf.WriteString("```\n---\n\n")
 						}
 						// try wl-copy then xclip
 						copied := false
