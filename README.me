@@ -1,0 +1,47 @@
+# File Gather
+
+A terminal-based TUI file picker that displays a directory tree on the left and a selected-files list on the right.  
+Designed for quick interactive selection of files, with options to open combined output in `gedit` or copy it to the clipboard.
+
+---
+
+## Features
+
+- Left pane: lazy-loading directory tree (expand/collapse).
+- Right pane: list of selected files (shows relative path + filename).
+- Keybindings:
+  - `h` / `j` / `k` / `l` — navigate (vim-style)
+  - `Space` — toggle selection for files
+  - `[` / `]` — switch focus between tree and selected list
+  - `d` — remove selected file (when focused on right pane)
+  - `e` — export: choose to open combined output in `gedit` **or** copy to clipboard
+  - `q` — quit the application
+- UI:
+  - Colored outer frame (blue by default) with title
+  - Thin vertical separator between left and right panes
+  - Helpbar with colored background
+- Clipboard support: attempts to use `wl-copy` (Wayland) then `xclip` (X11) as fallback.
+- Works with `gedit` for quick viewing/editing of a generated temporary file; falls back to `xdg-open` if needed.
+
+---
+
+## Requirements
+
+- Go 1.20+ (or the version you target)
+- Linux desktop environment (clipboard support via `wl-copy` or `xclip` recommended)
+- `gedit` (optional; `xdg-open` used as fallback)
+- Go modules will fetch:
+  - `github.com/gdamore/tcell/v2`
+  - `github.com/rivo/tview`
+
+---
+
+## Installation
+
+Clone the repository and build:
+
+```bash
+git clone https://your.git.repo/youruser/treepicker-pro.git
+cd treepicker-pro
+go build -o treepicker main.go
+
